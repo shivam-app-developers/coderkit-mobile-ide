@@ -2,6 +2,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { CheckoutButton } from '@/components/payment/CheckoutButton';
 import coursesMetadata from '@/codelab_docs/courses_metadata.json';
+import JsonLd from '@/components/seo/JsonLd';
 
 // Simplify type for this demo, usually defined in a types file
 interface Course {
@@ -22,8 +23,26 @@ const coursesByTrack = (coursesMetadata as Course[]).reduce((acc, course) => {
 }, {} as Record<string, Course[]>);
 
 export default function PricingPage() {
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "CoderKit Premium Subscription",
+    "description": "Access to all interactive coding courses, visualizers, and offline runtimes.",
+    "brand": {
+      "@type": "Brand",
+      "name": "CoderKit"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "4.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <JsonLd data={productSchema} />
       <Navbar />
       <main className="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
 

@@ -3,6 +3,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { getPostBySlug } from '@/lib/mdx';
 import { notFound } from 'next/navigation';
+import JsonLd from '@/components/seo/JsonLd';
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -12,8 +13,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     notFound();
   }
 
+  const blogSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.frontmatter.title,
+    "datePublished": post.frontmatter.date,
+    "author": {
+        "@type": "Person",
+        "name": post.frontmatter.author
+    },
+    "articleBody": post.content.substring(0, 150) + "..."
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <JsonLd data={blogSchema} />
       <Navbar />
       <article className="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto w-full">
 

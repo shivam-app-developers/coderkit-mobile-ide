@@ -9,10 +9,35 @@ import VSCodeSection from '@/components/landing/VSCodeSection';
 import ComparisonTable from '@/components/landing/ComparisonTable';
 import FAQSection from '@/components/landing/FAQSection';
 import Link from 'next/link';
+import JsonLd from '@/components/seo/JsonLd';
 
 export default function Home() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is CoderKit free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The app is free to download with basic lessons. Full courses and certificates require a premium subscription."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does it work offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CoderKit includes a true offline compiler for Python, C, C++, and Java. You can code without an internet connection."
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={faqSchema} />
       <Navbar />
       <main>
         <HeroSection />
