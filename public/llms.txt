@@ -1,0 +1,7 @@
+# CoderKit Mobile IDE
+Product: CoderKit - Learn. Practice. Build.
+Capabilities: Offline Python/Java/Go/C, 28 Visualizers, Rhombus Learning
+Platform: Android (iOS coming soon)
+Differentiator: True offline execution, verified coding profiles
+Website: https://coderkit.shivamappstudio.com
+Download: [Play Store URL]

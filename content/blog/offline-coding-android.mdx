@@ -1,0 +1,36 @@
+---
+title: "True Offline Coding on Android"
+date: "2023-11-10"
+excerpt: "How CoderKit brings desktop-class compilers to your mobile device without relying on internet connectivity."
+coverImage: "/assets/blog/offline-coding.jpg"
+author: "Shivam"
+category: "Technology"
+---
+
+# True Offline Coding on Android
+
+Most "mobile IDEs" are actually just text editors that send your code to a remote server for compilation. This means:
+1. You need a constant internet connection.
+2. Compilation is slow due to network latency.
+3. You can't code on a plane, subway, or in remote areas.
+
+## The CoderKit Difference
+
+CoderKit takes a harder path: we embed real, industrial-strength compilers and runtimes directly into the Android application.
+
+### Python: Chaquopy
+For Python, we utilize Chaquopy, a powerful plugin that allows Python to run seamlessly on Android. This isn't a stripped-down version; it supports standard libraries and even many C-extension modules like NumPy.
+
+### Java: ECJ (Eclipse Compiler for Java)
+We embed the Eclipse Compiler for Java (ECJ). This allows you to compile Java source code into bytecode (.class files) and execute them on the Android Runtime (ART) or a custom classloader, right on your device.
+
+### C: TCC (Tiny C Compiler)
+For C programming, we use TCC. It's incredibly small and fast, making it perfect for mobile devices. It compiles C code to native machine code in memory, allowing for instant execution.
+
+## Why It Matters
+
+**Speed:** Local compilation is instant. No waiting for server round-trips.
+**Reliability:** Code anywhere. Your learning isn't tethered to Wi-Fi.
+**Privacy:** Your code stays on your device. It's not sent to our servers unless you choose to back it up.
+
+CoderKit turns your smartphone into a true development machine, empowering you to learn and build whenever inspiration strikes.
