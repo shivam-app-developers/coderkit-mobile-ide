@@ -1,0 +1,965 @@
+[
+  {
+    "id": "python_101",
+    "title": "Python Syntax and Logic",
+    "track": "Track 1: The Python Developer",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Variables",
+      "Flow Control",
+      "Functions"
+    ],
+    "whyTakeThis": "To learn how to \"speak\" to computers and automate boring tasks.",
+    "theGoal": "Refactor your script into a dynamic game engine that can handle infinite stories.",
+    "anchor": "The \"Smart Assistant\" (e.g., Siri/Alexa).",
+    "day1Product": "Mini-Adventure Script . A linear story using simple print and input.",
+    "capstone": "The Text Adventure Engine",
+    "level": "Absolute Beginner",
+    "language": "Python",
+    "analogyAnchor": "A Recipe Book"
+  },
+  {
+    "id": "python_201",
+    "title": "Python Data Structures",
+    "track": "Track 1: The Python Developer",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Python 101"
+    ],
+    "topics": [
+      "Lists",
+      "Dictionaries",
+      "File I/O",
+      "Error Handling"
+    ],
+    "whyTakeThis": "To learn how to organize massive amounts of data efficiently.",
+    "theGoal": "Build a professional tracker that saves data to disk and calculates analytics.",
+    "anchor": "The \"Digital Library\".",
+    "day1Product": "Expense List Script . Using two parallel lists to track items and prices.",
+    "capstone": "Personal Finance Tracker",
+    "level": "Intermediate",
+    "language": "Python",
+    "analogyAnchor": "The Excel Spreadsheet"
+  },
+  {
+    "id": "python_301",
+    "title": "Data Analytics (NumPy & Pandas)",
+    "track": "Track 1: The Python Developer",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Python 201"
+    ],
+    "topics": [
+      "NumPy Arrays",
+      "Pandas DataFrames"
+    ],
+    "whyTakeThis": "To find insights hidden in raw data using professional tools.",
+    "theGoal": "Process thousands of rows of data instantly using Vectorization.",
+    "anchor": "The \"Excel Spreadsheet\".",
+    "day1Product": "Manual Grade Calculator . Calculating averages using standard Python loops (slow).",
+    "capstone": "CSV Data Explorer",
+    "level": "Advanced",
+    "language": "Python",
+    "analogyAnchor": "The Excel Spreadsheet"
+  },
+  {
+    "id": "python_302",
+    "title": "Machine Learning (SciPy & Scikit-Learn)",
+    "track": "Track 1: The Python Developer",
+    "icon": "\ud83d\udcd5",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Python 301"
+    ],
+    "topics": [
+      "SciPy",
+      "Scikit-Learn"
+    ],
+    "whyTakeThis": "To build programs that can predict the future based on the past.",
+    "theGoal": "Replace manual rules with a trained AI model.",
+    "anchor": "The \"House Appraiser\".",
+    "day1Product": "The Rule-Based Estimator . A script that guesses house price using simple if rules (e.g., price \\= size \\* 100).",
+    "capstone": "Price Predictor AI",
+    "level": "Professional",
+    "language": "Python",
+    "analogyAnchor": "The Weather Forecaster"
+  },
+  {
+    "id": "python_401",
+    "title": "Python Web Backend (Flask)",
+    "track": "Track 1: The Python Developer",
+    "icon": "\ud83d\udcd5",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Web Track 101 (HTML/CSS)"
+    ],
+    "topics": [
+      "HTTP",
+      "Routing",
+      "JSON APIs"
+    ],
+    "whyTakeThis": "To build the \"Engine\" behind web and mobile apps.",
+    "theGoal": "Build a dynamic API that fetches real data and serves multiple endpoints.",
+    "anchor": "The \"Restaurant Kitchen\".",
+    "day1Product": "One-Page Weather Server . A simple Flask route returning hardcoded weather.",
+    "capstone": "Weather Aggregator API",
+    "level": "Professional Specialization",
+    "language": "Python",
+    "analogyAnchor": "The Restaurant Kitchen"
+  },
+  {
+    "id": "python_402",
+    "title": "Enterprise Web with Django",
+    "track": "Track 1: The Python Developer",
+    "icon": "\ud83d\udcd5",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Web Track 101",
+      "Python 201"
+    ],
+    "topics": [
+      "MVT Architecture",
+      "ORM",
+      "Admin Panel"
+    ],
+    "whyTakeThis": "To build massive, scalable web platforms.",
+    "theGoal": "Build a complete school management system with an admin panel.",
+    "anchor": "The \"Newspaper Publishing House\".",
+    "day1Product": "N/A (Starts in Project Mode).",
+    "capstone": "School Record System",
+    "level": "Expert Specialization",
+    "language": "Python",
+    "analogyAnchor": "The Restaurant Kitchen"
+  },
+  {
+    "id": "web_101",
+    "title": "The Static Web (HTML/CSS)",
+    "track": "Track 4: Full Stack Web Developer",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Semantic HTML",
+      "Flexbox/Grid"
+    ],
+    "whyTakeThis": "To build the visible part of the internet.",
+    "theGoal": "Build a multi-page site with shared styling.",
+    "anchor": "The \"Magazine Layout\".",
+    "day1Product": "Profile Card . A simple index.html with \\<style\\> tags inside.",
+    "capstone": "My Developer Portfolio",
+    "level": "Beginner",
+    "language": "HTML",
+    "analogyAnchor": "A Magazine Layout"
+  },
+  {
+    "id": "web_201",
+    "title": "Interactive Web (JavaScript)",
+    "track": "Track 4: Full Stack Web Developer",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Web 101 (HTML/CSS)"
+    ],
+    "topics": [
+      "DOM Manipulation",
+      "Async JS"
+    ],
+    "whyTakeThis": "To make websites come alive.",
+    "theGoal": "Fetch real data from the internet.",
+    "anchor": "The \"Smart Home System\".",
+    "day1Product": "Static Weather UI . Hardcoded weather data displayed on screen.",
+    "capstone": "Dynamic Weather Dashboard",
+    "level": "Intermediate",
+    "language": "JavaScript",
+    "analogyAnchor": "The Remote Control"
+  },
+  {
+    "id": "web_301",
+    "title": "Modern React",
+    "track": "Track 4: Full Stack Web Developer",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Web 201 (JavaScript)"
+    ],
+    "topics": [
+      "Components",
+      "Hooks",
+      "State"
+    ],
+    "whyTakeThis": "To build complex web apps like Facebook.",
+    "theGoal": "Build a full task management app with state.",
+    "anchor": "The \"LEGO City\".",
+    "day1Product": "N/A (Project Mode Start).",
+    "capstone": "Task Master App",
+    "level": "Advanced",
+    "language": "JavaScript",
+    "analogyAnchor": "LEGO Blocks"
+  },
+  {
+    "id": "web_302",
+    "title": "Vue.js Essentials",
+    "track": "Track 4: Full Stack Web Developer",
+    "icon": "\ud83d\udcd5",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Web 201 (JavaScript)"
+    ],
+    "topics": [
+      "Directives",
+      "Reactivity",
+      "Components"
+    ],
+    "whyTakeThis": "To build interactive UIs progressively.",
+    "theGoal": "Build a component-based store.",
+    "anchor": "The \"Reactive Dashboard\".",
+    "day1Product": "Single File Vue . Using Vue via CDN link.",
+    "capstone": "Interactive Product Catalog",
+    "level": "Advanced",
+    "language": "JavaScript",
+    "analogyAnchor": "A Reactive Dashboard"
+  },
+  {
+    "id": "java_101",
+    "title": "Java Foundations",
+    "track": "Track 2: Java Enterprise Developer",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Classes",
+      "Methods",
+      "Primitives"
+    ],
+    "whyTakeThis": "To build robust, error-free software used by banks.",
+    "theGoal": "Refactor the logic into secure Objects to manage multiple accounts.",
+    "anchor": "The \"Car Factory\".",
+    "day1Product": "Simple ATM Script . Using variables to track balance and if/else to withdraw.",
+    "capstone": "Bank Account Manager",
+    "level": "Beginner",
+    "language": "Java",
+    "analogyAnchor": "The Car Factory"
+  },
+  {
+    "id": "java_201",
+    "title": "Advanced Java & Collections",
+    "track": "Track 2: Java Enterprise Developer",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Java 101"
+    ],
+    "topics": [
+      "Interfaces",
+      "Maps",
+      "Inheritance"
+    ],
+    "whyTakeThis": "To handle complex data and flexible code structures.",
+    "theGoal": "Build a flexible system that can grow indefinitely.",
+    "anchor": "The \"Backpack vs Suitcase\".",
+    "day1Product": "Grade List Script . Using simple Arrays (fixed size) to store grades.",
+    "capstone": "School Management System",
+    "level": "Intermediate",
+    "language": "Java",
+    "analogyAnchor": "The Backpack vs Suitcase"
+  },
+  {
+    "id": "java_301",
+    "title": "Java Web & Networking",
+    "track": "Track 2: Java Enterprise Developer",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Java 201"
+    ],
+    "topics": [
+      "Sockets",
+      "Threads",
+      "HTTP"
+    ],
+    "whyTakeThis": "To make Java programs talk to each other over the internet.",
+    "theGoal": "Build a robust server that handles hundreds of users at once.",
+    "anchor": "The \"Post Office\".",
+    "day1Product": "Single-Threaded Listener . A server that handles one request and then quits.",
+    "capstone": "Mini-HTTP Server",
+    "level": "Advanced",
+    "language": "Java",
+    "analogyAnchor": "The Post Office"
+  },
+  {
+    "id": "go_101",
+    "title": "Go Fundamentals",
+    "track": "Track 3: The Systems Engineer (Go)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Syntax",
+      "Types",
+      "Control Structures"
+    ],
+    "whyTakeThis": "To build fast, efficient software that powers the cloud.",
+    "theGoal": "Build a CLI tool that accepts arguments and flags.",
+    "anchor": "The \"Construction Site\".",
+    "day1Product": "Unit Converter Script . Hardcoded functions to convert F to C.",
+    "capstone": "CLI Unit Converter",
+    "level": "Beginner",
+    "language": "Go",
+    "analogyAnchor": "The Construction Site"
+  },
+  {
+    "id": "go_201",
+    "title": "Structs & Interfaces",
+    "track": "Track 3: The Systems Engineer (Go)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Go 101"
+    ],
+    "topics": [
+      "Pointers",
+      "Methods",
+      "Interfaces"
+    ],
+    "whyTakeThis": "To structure complex data without complexity.",
+    "theGoal": "Build a storage-agnostic task manager.",
+    "anchor": "The \"LEGO Kit\".",
+    "day1Product": "Task Struct Script . Defining a Task struct and printing it.",
+    "capstone": "InMemory Task Store",
+    "level": "Intermediate",
+    "language": "Go",
+    "analogyAnchor": "The LEGO Kit"
+  },
+  {
+    "id": "go_301",
+    "title": "Concurrency & Systems",
+    "track": "Track 3: The Systems Engineer (Go)",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Go 101"
+    ],
+    "topics": [
+      "Goroutines",
+      "Channels",
+      "Networking"
+    ],
+    "whyTakeThis": "To do thousands of things at once without crashing.",
+    "theGoal": "Check 100 websites instantly using parallel workers.",
+    "anchor": "The \"Busy Coffee Shop\".",
+    "day1Product": "Sequential Health Checker . Checking 3 websites one by one (Slow).",
+    "capstone": "Concurrent URL Health Checker",
+    "level": "Advanced",
+    "language": "Go",
+    "analogyAnchor": "The Busy Coffee Shop"
+  },
+  {
+    "id": "sql_101",
+    "title": "SQL Mastery",
+    "track": "Track 8: Data Engineering (SQL)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Schema Design",
+      "Joins"
+    ],
+    "whyTakeThis": "To speak the language of databases and data.",
+    "theGoal": "Build the database for a retail store and generate reports.",
+    "anchor": "The \"Filing Cabinet System\".",
+    "day1Product": "Single Table . Storing contacts in one flat table.",
+    "capstone": "Retail Inventory DB",
+    "level": "Beginner/Intermediate",
+    "language": "SQL",
+    "analogyAnchor": "The Filing Cabinet System"
+  },
+  {
+    "id": "c_101",
+    "title": "C Fundamentals",
+    "track": "Track 9: C Language (Low-Level Programming)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Pointers",
+      "Arrays",
+      "Memory Management"
+    ],
+    "whyTakeThis": "To understand how computers really work at the hardware level.",
+    "theGoal": "Build a CLI tool that manages memory efficiently.",
+    "anchor": "The \"Manual Car\". You have full control (Manual Memory), but you can stall the engine (Segfault) if you aren't careful.",
+    "day1Product": "Pointer Swap Script . Manually swapping values using pointers.",
+    "capstone": "Memory-Safe Calculator",
+    "level": "Beginner",
+    "language": "C",
+    "analogyAnchor": "The Manual Car"
+  },
+  {
+    "id": "c_201",
+    "title": "Data Structures in C",
+    "track": "Track 9: C Language (Low-Level Programming)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "C 101"
+    ],
+    "topics": [
+      "Linked Lists",
+      "Stacks",
+      "Queues",
+      "Dynamic Memory"
+    ],
+    "whyTakeThis": "To understand how Python lists and Java arrays work under the hood.",
+    "theGoal": "Build dynamic data structures from scratch.",
+    "anchor": "The \"Building Foundation\". Everything in programming is built on these fundamentals.",
+    "day1Product": "Fixed Array Manager . Using static arrays with manual indexing.",
+    "capstone": "Custom Data Structure Library",
+    "level": "Intermediate",
+    "language": "C",
+    "analogyAnchor": "The Building Foundation"
+  },
+  {
+    "id": "android_101",
+    "title": "Kotlin Essentials",
+    "track": "Track 5: Modern Android & Kotlin (Desktop Only)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": true,
+    "prerequisites": [],
+    "topics": [
+      "Null Safety",
+      "Control Flow"
+    ],
+    "whyTakeThis": "To write safer, cleaner code.",
+    "theGoal": "Make it bulletproof.",
+    "anchor": "The \"Safety Harness\".",
+    "day1Product": "Unsafe Calculator . A script that crashes if you enter text instead of numbers.",
+    "capstone": "Safe Calculator CLI",
+    "level": "Beginner",
+    "language": "Kotlin",
+    "analogyAnchor": "The Safety Harness"
+  },
+  {
+    "id": "android_201",
+    "title": "Functional Kotlin & OOP",
+    "track": "Track 5: Modern Android & Kotlin (Desktop Only)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Kotlin 101"
+    ],
+    "topics": [
+      "Data Classes",
+      "Higher-Order Functions"
+    ],
+    "whyTakeThis": "To write powerful code with less typing.",
+    "theGoal": "Do it in one line using functional programming.",
+    "anchor": "The \"Swiss Army Knife\".",
+    "day1Product": "Manual Filter Script . Using a for loop to find passing grades.",
+    "capstone": "Student Grade Analyzer",
+    "level": "Intermediate",
+    "language": "Kotlin",
+    "analogyAnchor": "The Swiss Army Knife"
+  },
+  {
+    "id": "android_301",
+    "title": "Advanced Backend (Ktor)",
+    "track": "Track 5: Modern Android & Kotlin (Desktop Only)",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Kotlin 201"
+    ],
+    "topics": [
+      "Coroutines",
+      "Ktor Server"
+    ],
+    "whyTakeThis": "To build high-performance backends.",
+    "theGoal": "Handle thousands of users concurrently.",
+    "anchor": "The \"Air Traffic Control\".",
+    "day1Product": "Blocking Server . A server that pauses while working.",
+    "capstone": "Real-time Chat Server",
+    "level": "Professional",
+    "language": "Kotlin",
+    "analogyAnchor": "The Air Traffic Control"
+  },
+  {
+    "id": "groovy_101",
+    "title": "Groovy Basics",
+    "track": "Track 6: Groovy Automation",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Syntax",
+      "GStrings",
+      "Collections"
+    ],
+    "whyTakeThis": "To automate boring tasks.",
+    "theGoal": "Organize a whole folder automatically.",
+    "anchor": "The \"Magic Wand\".",
+    "day1Product": "Simple Rename Script . Rename one file hardcoded.",
+    "capstone": "File Organizer Script",
+    "level": "Beginner",
+    "language": "Groovy",
+    "analogyAnchor": "The Magic Wand"
+  },
+  {
+    "id": "groovy_201",
+    "title": "Advanced Groovy & DSLs",
+    "track": "Track 6: Groovy Automation",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Groovy 101"
+    ],
+    "topics": [
+      "Closures",
+      "DSLs"
+    ],
+    "whyTakeThis": "To create your own mini-languages.",
+    "theGoal": "Write configuration in plain English.",
+    "anchor": "The \"Custom Language\".",
+    "day1Product": "Config Parser . Reading a standard properties file.",
+    "capstone": "JSON Config Generator",
+    "level": "Advanced",
+    "language": "Groovy",
+    "analogyAnchor": "The Custom Language"
+  },
+  {
+    "id": "clojure_101",
+    "title": "Functional Foundations",
+    "track": "Track 7: Functional Thinking (Clojure)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": false,
+    "prerequisites": [],
+    "topics": [
+      "Immutability",
+      "Functions"
+    ],
+    "whyTakeThis": "To change how you think about programming.",
+    "theGoal": "A list that never changes but still updates.",
+    "anchor": "The \"Math Equation\".",
+    "day1Product": "Global State List . A list that gets modified (Bad).",
+    "capstone": "Immutable To-Do List",
+    "level": "Beginner",
+    "language": "Clojure",
+    "analogyAnchor": "The Math Equation"
+  },
+  {
+    "id": "clojure_201",
+    "title": "Recursion & Logic",
+    "track": "Track 7: Functional Thinking (Clojure)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": false,
+    "prerequisites": [
+      "Clojure 101"
+    ],
+    "topics": [
+      "Recursion",
+      "Macros"
+    ],
+    "whyTakeThis": "To solve complex problems elegantly.",
+    "theGoal": "Solve it with pure recursion.",
+    "anchor": "The \"Mirror Hall\".",
+    "day1Product": "While Loop Solver . Solving a problem with mutable loops.",
+    "capstone": "Recursive Maze Solver",
+    "level": "Intermediate",
+    "language": "Clojure",
+    "analogyAnchor": "The Mirror Hall"
+  },
+  {
+    "id": "rust_101",
+    "title": "Rust Fundamentals",
+    "track": "Track 10: Systems Programming (Rust) (Desktop Only)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": true,
+    "prerequisites": [],
+    "topics": [
+      "Ownership",
+      "Borrowing",
+      "Pattern Matching"
+    ],
+    "whyTakeThis": "To write code that is as fast as C++ but safe from memory leaks.",
+    "theGoal": "Build a CLI tool that processes text files.",
+    "anchor": "The \"High-Speed Train\". Fast, but on strict rails (Safety).",
+    "day1Product": "Guessing Game . Using simple I/O and loops.",
+    "capstone": "Grep Lite",
+    "level": "Beginner",
+    "language": "Rust",
+    "analogyAnchor": "The High-Speed Train"
+  },
+  {
+    "id": "rust_201",
+    "title": "Advanced Rust (Lifetimes & Concurrency)",
+    "track": "Track 10: Systems Programming (Rust) (Desktop Only)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Rust 101"
+    ],
+    "topics": [
+      "Lifetimes",
+      "Traits",
+      "Concurrency"
+    ],
+    "whyTakeThis": "To build multi-threaded applications without fear of data races.",
+    "theGoal": "Build a concurrent web server from scratch.",
+    "anchor": "The \"Library System\". You can borrow books (references), but you have to return them (lifetimes).",
+    "day1Product": "Simple Thread Spawner . Spawning 5 threads.",
+    "capstone": "Multi-Threaded Web Server",
+    "level": "Intermediate",
+    "language": "Rust",
+    "analogyAnchor": "The Library System"
+  },
+  {
+    "id": "java_501",
+    "title": "Spring Boot Microservices",
+    "track": "Track 10: Desktop-Only Specializations",
+    "icon": "\u2615",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Java 301",
+      "SQL 101"
+    ],
+    "topics": [],
+    "whyTakeThis": "Spring Boot powers the enterprise world (Netflix, Uber, Banking). It is the standard for Java backend jobs.",
+    "theGoal": "",
+    "anchor": "The \"Car Manufacturing Plant\". Unlike a simple factory (Java 101), this plant automates everything (Auto-configuration, Dependency Injection).",
+    "day1Product": "",
+    "capstone": "Distributed Banking System",
+    "level": "Expert",
+    "language": "Java",
+    "analogyAnchor": "The Car Manufacturing Plant"
+  },
+  {
+    "id": "cpp_502",
+    "title": "C++ Game Engine Fundamentals",
+    "track": "Track 10: Desktop-Only Specializations",
+    "icon": "\ud83c\udfce\ufe0f",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Go 201 (For Systems thinking) or Java 201"
+    ],
+    "topics": [],
+    "whyTakeThis": "To understand how games like Unreal Engine work under the hood.",
+    "theGoal": "",
+    "anchor": "The \"Movie Set\". You control the camera, the actors (objects), and the physics of the world frame-by-frame.",
+    "day1Product": "",
+    "capstone": "2D Physics Engine",
+    "level": "Expert",
+    "language": "C++",
+    "analogyAnchor": "The Movie Studio"
+  },
+  {
+    "id": "python_503",
+    "title": "Data Engineering with Python (Pandas & Spark)",
+    "track": "Track 10: Desktop-Only Specializations",
+    "icon": "\ud83d\udc0d",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Python 301 (Data Analytics)"
+    ],
+    "topics": [],
+    "whyTakeThis": "To process massive datasets that don't fit in memory (Big Data).",
+    "theGoal": "",
+    "anchor": "The \"Water Treatment Plant\". Raw data flows in, gets filtered/cleaned in stages, and flows out pure.",
+    "day1Product": "",
+    "capstone": "Log Analysis Pipeline",
+    "level": "Expert",
+    "language": "Python",
+    "analogyAnchor": "The Excel Spreadsheet"
+  },
+  {
+    "id": "web_504",
+    "title": "Full Stack MERN (MongoDB, Express, React, Node)",
+    "track": "Track 10: Desktop-Only Specializations",
+    "icon": "\ud83c\udf10",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Web 301 (React)",
+      "Web 201 (JS)"
+    ],
+    "topics": [],
+    "whyTakeThis": "To become a \"Universal Developer\" using JavaScript for everything.",
+    "theGoal": "",
+    "anchor": "The \"Translator\". You speak one language (JS) to the Database, Server, and Browser.",
+    "day1Product": "",
+    "capstone": "Social Media Clone",
+    "level": "Expert",
+    "language": "JavaScript",
+    "analogyAnchor": "LEGO Blocks"
+  },
+  {
+    "id": "general_505",
+    "title": "C\\# & .NET Core Enterprise",
+    "track": "Track 10: Desktop-Only Specializations",
+    "icon": "\ud83d\udda5\ufe0f",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C# 301"
+    ],
+    "topics": [],
+    "whyTakeThis": "To build high-performance web APIs and desktop apps for the Microsoft ecosystem.",
+    "theGoal": "",
+    "anchor": "The \"Office Building\". Structured, secure, and built to last (.NET Framework).",
+    "day1Product": "",
+    "capstone": "Corporate HR Portal",
+    "level": "Expert",
+    "language": "C#",
+    "analogyAnchor": "The Smart Home System"
+  },
+  {
+    "id": "php_506",
+    "title": "Modern PHP (Laravel)",
+    "track": "Track 10: Desktop-Only Specializations",
+    "icon": "\ud83d\udc18",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "Web 101 (HTML)"
+    ],
+    "topics": [],
+    "whyTakeThis": "PHP powers 70% of the web (WordPress, Facebook). Laravel makes it modern and elegant.",
+    "theGoal": "",
+    "anchor": "The \"Magazine Editor\". assembling pages quickly using templates and existing content blocks.",
+    "day1Product": "",
+    "capstone": "CMS Blog Platform",
+    "level": "Expert",
+    "language": "PHP",
+    "analogyAnchor": "The Magazine Editor"
+  },
+  {
+    "id": "cpp_101",
+    "title": "C++ Foundations",
+    "track": "Track 11: C++ High-Performance (Desktop Only)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": true,
+    "prerequisites": [],
+    "topics": [],
+    "whyTakeThis": "To learn the language that powers operating systems and game engines.",
+    "theGoal": "",
+    "anchor": "The \"Manual Car\". You have full control (Manual Memory), but you can stall the engine (Segfault) if you aren't careful.",
+    "day1Product": "Pointer Swap . Manually swapping memory addresses.",
+    "capstone": "Inventory System",
+    "level": "Beginner",
+    "language": "C++",
+    "analogyAnchor": "The Manual Car with Power Steering"
+  },
+  {
+    "id": "cpp_201",
+    "title": "Object-Oriented C++",
+    "track": "Track 11: C++ High-Performance (Desktop Only)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C++ 101"
+    ],
+    "topics": [],
+    "whyTakeThis": "To build large-scale systems using Classes and Inheritance.",
+    "theGoal": "",
+    "anchor": "The \"Biological Species\". Classification through inheritance (Animal \\-\\> Mammal \\-\\> Dog).",
+    "day1Product": "",
+    "capstone": "RPG Battle System",
+    "level": "Intermediate",
+    "language": "C++",
+    "analogyAnchor": "The Biological Species Tree"
+  },
+  {
+    "id": "cpp_301",
+    "title": "Modern C++ & STL",
+    "track": "Track 11: C++ High-Performance (Desktop Only)",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C++ 201"
+    ],
+    "topics": [],
+    "whyTakeThis": "To write safe, modern C++ (C++11/14/17/20) using standard libraries.",
+    "theGoal": "",
+    "anchor": "The \"Power Tools\". Smart pointers and Vectors do the heavy lifting for you safely.",
+    "day1Product": "",
+    "capstone": "High-Frequency Trading Simulator",
+    "level": "Advanced",
+    "language": "C++",
+    "analogyAnchor": "The Power Tools"
+  },
+  {
+    "id": "cpp_401",
+    "title": "Build Systems & CMake",
+    "track": "Track 11: C++ High-Performance (Desktop Only)",
+    "icon": "\ud83d\udcd5",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C++ 301"
+    ],
+    "topics": [],
+    "whyTakeThis": "C++ projects are rarely single files. You need to know how to compile huge projects across different OSs.",
+    "theGoal": "",
+    "anchor": "The \"Construction Blueprint\". CMakeLists.txt tells the builder exactly how to assemble the skyscraper.",
+    "day1Product": "",
+    "capstone": "Custom Library Integration",
+    "level": "Professional",
+    "language": "C++",
+    "analogyAnchor": "The Construction Blueprint"
+  },
+  {
+    "id": "cpp_501",
+    "title": "Game Engine Architecture",
+    "track": "Track 11: C++ High-Performance (Desktop Only)",
+    "icon": "\ud83c\udfce\ufe0f",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C++ 301"
+    ],
+    "topics": [],
+    "whyTakeThis": "To understand the magic behind Unity or Unreal Engine.",
+    "theGoal": "",
+    "anchor": "The \"Movie Studio\". Rendering (Camera), Physics (Stunts), and Audio (Sound) all running in a tight loop.",
+    "day1Product": "",
+    "capstone": "2D Physics Engine",
+    "level": "Expert",
+    "language": "C++",
+    "analogyAnchor": "The Movie Studio"
+  },
+  {
+    "id": "csharp_101",
+    "title": "C\\# Fundamentals",
+    "track": "Track 12: C\\# & .NET Core (Desktop Only)",
+    "icon": "\ud83d\udcd8",
+    "isFree": true,
+    "requiresDesktop": true,
+    "prerequisites": [],
+    "topics": [],
+    "whyTakeThis": "To learn a strongly-typed, modern language used in enterprise, games (Unity), and mobile (Xamarin).",
+    "theGoal": "",
+    "anchor": "The \"Smart Home\". Highly structured, everything has a place (Namespaces), and appliances talk to each other safely.",
+    "day1Product": "Greeting Bot . Basic Input/Output.",
+    "capstone": "Task Scheduler CLI",
+    "level": "Beginner",
+    "language": "C#",
+    "analogyAnchor": "The Smart Home System"
+  },
+  {
+    "id": "csharp_201",
+    "title": "Object-Oriented C\\#",
+    "track": "Track 12: C\\# & .NET Core (Desktop Only)",
+    "icon": "\ud83d\udcd7",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C# 101"
+    ],
+    "topics": [],
+    "whyTakeThis": "To master OOP principles as implemented in one of the best OOP languages.",
+    "theGoal": "",
+    "anchor": "The \"Corporate Hierarchy\". Base Employee class \\-\\> Manager \\-\\> Intern. Clear roles and permissions.",
+    "day1Product": "",
+    "capstone": "Library Management System",
+    "level": "Intermediate",
+    "language": "C#",
+    "analogyAnchor": "The Smart Home System"
+  },
+  {
+    "id": "csharp_301",
+    "title": "Advanced C\\# & LINQ",
+    "track": "Track 12: C\\# & .NET Core (Desktop Only)",
+    "icon": "\ud83d\udcd9",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C# 201"
+    ],
+    "topics": [],
+    "whyTakeThis": "To write concise, powerful code for data manipulation.",
+    "theGoal": "",
+    "anchor": "The \"Query Wizard\". Ask for data (LINQ) and get exactly what you want without writing loops.",
+    "day1Product": "",
+    "capstone": "Data Analyzer Tool",
+    "level": "Advanced",
+    "language": "C#",
+    "analogyAnchor": "The Smart Home System"
+  },
+  {
+    "id": "csharp_401",
+    "title": "ASP.NET Core Web API",
+    "track": "Track 12: C\\# & .NET Core (Desktop Only)",
+    "icon": "\ud83d\udcd5",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C# 301"
+    ],
+    "topics": [],
+    "whyTakeThis": "To build high-performance web services and REST APIs.",
+    "theGoal": "",
+    "anchor": "The \"Airport Hub\". Controlling traffic (Routing), security checks (Middleware), and baggage handling (Controllers).",
+    "day1Product": "",
+    "capstone": "E-Commerce Backend",
+    "level": "Professional",
+    "language": "C#",
+    "analogyAnchor": "The Smart Home System"
+  },
+  {
+    "id": "csharp_501",
+    "title": "Modern .NET Architecture",
+    "track": "Track 12: C\\# & .NET Core (Desktop Only)",
+    "icon": "\ud83c\udfce\ufe0f",
+    "isFree": false,
+    "requiresDesktop": true,
+    "prerequisites": [
+      "C\\# 301",
+      "ASP.NET 401"
+    ],
+    "topics": [],
+    "whyTakeThis": "To design scalable, maintainable enterprise systems.",
+    "theGoal": "",
+    "anchor": "The \"City Planner\". Designing infrastructure that can support millions of citizens (users).",
+    "day1Product": "",
+    "capstone": "Microservices Booking System",
+    "level": "Expert",
+    "language": "C#",
+    "analogyAnchor": "The Smart Home System"
+  }
+]

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoderKit | Learn. Practice. Build. - Mobile Coding IDE</title>
+    <meta name="description"
+        content="Master coding with visual learning. Python, Java, Go, C with 20+ visualizers, ghost-code practice, and real offline runtimes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { primary: '#4F46E5', secondary: '#7C3AED', accent: '#10B981', dark: '#111827' } }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.25);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes float-delayed {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-16 items-center">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-9 h-9 gradient-bg rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                    &lt;/&gt;</div>
+                <span class="font-bold text-lg text-gray-900">CoderKit</span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#how-it-works" class="text-gray-600 hover:text-brand-primary">How It Works</a>
+                <a href="#courses" class="text-gray-600 hover:text-brand-primary">Courses</a>
+                <a href="#visualizers" class="text-gray-600 hover:text-brand-primary">Visualizers</a>
+                <a href="#sandbox" class="text-gray-600 hover:text-brand-primary">Sandbox</a>
+                <a href="#faq" class="text-gray-600 hover:text-brand-primary">FAQ</a>
+            </div>
+            <a href="#" class="gradient-bg text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">Get
+                App</a>
+        </div>
+    </nav>
+
+    <!-- HERO with Animations -->
+    <section class="pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <p class="text-brand-primary font-semibold text-sm mb-3">📱 Available on Android • iOS Coming Soon</p>
+                <h1 class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight mb-6">
+                    Learn Coding.<br><span class="gradient-text">Practice Smart.</span><br>Build Real.
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    Master Python, Java, Go, C with <strong>interactive visualizers</strong>, <strong>ghost-code
+                        practice</strong>, and <strong>real offline runtimes</strong>. From absolute beginner to
+                    job-ready.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#"
+                        class="gradient-bg text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:opacity-90">
+                        <i class="fa-brands fa-google-play"></i> Start Learning Free
+                    </a>
+                    <a href="#courses"
+                        class="border-2 border-gray-200 px-6 py-3 rounded-xl font-semibold text-gray-700 hover:border-brand-primary hover:text-brand-primary transition">
+                        Browse 40+ Courses
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <!-- Floating language badges -->
+                <div
+                    class="absolute -top-4 -left-4 bg-yellow-400 text-yellow-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-float">
+                    🐍 Python</div>
+                <div
+                    class="absolute top-20 -right-8 bg-cyan-400 text-cyan-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-float-delayed">
+                    🔷 Go</div>
+                <div
+                    class="absolute bottom-32 -left-6 bg-red-400 text-red-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-float">
+                    ☕ Java</div>
+                <div
+                    class="absolute bottom-10 -right-4 bg-blue-400 text-blue-900 px-3 py-1 rounded-full text-xs font-bold shadow-lg animate-float-delayed">
+                    ⚙️ C</div>
+
+                <div class="w-64 h-[450px] bg-gray-900 rounded-[2.5rem] border-4 border-gray-700 p-4 shadow-2xl">
+                    <div class="bg-gray-800 rounded-2xl h-full p-4 flex flex-col justify-center items-center">
+                        <div class="w-full bg-gray-700 rounded-lg p-3 font-mono text-xs text-green-400 mb-4">
+                            <div class="text-gray-500"># Ghost Code Practice</div>
+                            <div><span class="text-purple-400">def</span> <span
+                                    class="text-yellow-400">sort</span>(arr):</div>
+                            <div class="text-gray-600 opacity-50"> for i in range...</div>
+                        </div>
+                        <p class="text-gray-400 text-sm">App Preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">How <span class="gradient-text">CoderKit
+                        Works</span></h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">A proven 3-step approach that turns beginners into
+                    confident developers.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div
+                    class="bg-gradient-to-br from-purple-50 to-indigo-50 p-8 rounded-2xl border border-purple-100 text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-2xl font-bold">
+                        1</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">📖 Learn</h3>
+                    <p class="text-gray-600 text-sm">Learn with <strong>20+ interactive visualizers</strong> - Algorithm
+                        Sandbox, Memory Manager, SQL Visualizer, Graph Visualizer and more. See exactly how code
+                        executes.</p>
+                </div>
+                <div
+                    class="bg-gradient-to-br from-emerald-50 to-teal-50 p-8 rounded-2xl border border-emerald-100 text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-2xl font-bold">
+                        2</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">✍️ Practice</h3>
+                    <p class="text-gray-600 text-sm">Write and compile code with <strong>real offline runtimes</strong>
+                        - just like desktop. <strong>Ghost Code™</strong> type-along builds muscle memory.</p>
+                </div>
+                <div
+                    class="bg-gradient-to-br from-orange-50 to-amber-50 p-8 rounded-2xl border border-orange-100 text-center">
+                    <div
+                        class="w-16 h-16 mx-auto mb-4 rounded-full bg-orange-500 text-white flex items-center justify-center text-2xl font-bold">
+                        3</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">🧪 Test</h3>
+                    <p class="text-gray-600 text-sm"><strong>Bug Squasher</strong>, <strong>Code Scramble</strong>, and
+                        <strong>Code Refactor</strong> challenges. Find bugs, reorder code, improve structure.
+                    </p>
+                </div>
+            </div>
+            <div class="text-center">
+                <p class="inline-flex items-center gap-2 bg-gray-100 px-6 py-3 rounded-full text-gray-700 font-medium">
+                    <i class="fa-solid fa-arrow-right text-brand-primary"></i> Then <strong>BUILD</strong> real projects
+                    with our offline sandbox
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">40+ Courses Across <span
+                        class="gradient-text">12 Tracks</span></h2>
+                <p class="text-gray-600 text-lg max-w-2xl mx-auto">From "Hello World" to job-ready. Powered by the
+                    Rhombus Methodology.</p>
+            </div>
+
+            <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2"><i
+                    class="fa-solid fa-globe text-brand-primary"></i> Universal Tracks <span
+                    class="text-sm font-normal text-gray-500">(Mobile + VS Code)</span></h3>
+            <p class="text-gray-500 text-sm mb-6">Available on both mobile app and VS Code extension. Learn anywhere,
+                continue on
+                desktop.</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+
+                <!-- PYTHON -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-yellow-400 to-orange-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-lg shadow-yellow-200/50">
+                                    <i class="fa-brands fa-python text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">Python</span>
+                                    <span class="block text-xs text-gray-500">Developer Track</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-yellow-100 text-yellow-700 text-xs font-bold rounded-full">6
+                                Courses</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">Syntax & Logic</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">201</span><span
+                                    class="text-gray-700">Data Structures</span><span
+                                    class="ml-auto text-xs text-blue-600">Intermediate</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">301</span><span
+                                    class="text-gray-700">NumPy & Pandas</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">302</span><span
+                                    class="text-gray-700">Machine Learning</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">401</span><span
+                                    class="text-gray-700">Flask Backend</span><span
+                                    class="ml-auto text-xs text-red-600">Pro</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">402</span><span
+                                    class="text-gray-700">Django Enterprise</span><span
+                                    class="ml-auto text-xs text-red-600">Expert</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-graduation-cap text-yellow-500"></i> From scripting to AI &
+                                Enterprise Web</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JAVA -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-red-500 to-rose-600"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-200/50">
+                                    <i class="fa-brands fa-java text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">Java</span>
+                                    <span class="block text-xs text-gray-500">Enterprise Developer</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full">3
+                                Courses</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">Java Foundations</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">201</span><span
+                                    class="text-gray-700">Collections & OOP</span><span
+                                    class="ml-auto text-xs text-blue-600">Intermediate</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">301</span><span
+                                    class="text-gray-700">Web & Networking</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-building text-red-500"></i> Build robust enterprise software</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WEB -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-orange-500 to-pink-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center shadow-lg shadow-orange-200/50">
+                                    <i class="fa-brands fa-html5 text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">Web</span>
+                                    <span class="block text-xs text-gray-500">Full Stack Developer</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full">4
+                                Courses</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">HTML & CSS</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">201</span><span
+                                    class="text-gray-700">JavaScript</span><span
+                                    class="ml-auto text-xs text-blue-600">Intermediate</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">301</span><span
+                                    class="text-gray-700">React</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">302</span><span
+                                    class="text-gray-700">Vue.js</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-globe text-orange-500"></i> Build the visible internet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GO -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-200/50">
+                                    <i class="fa-brands fa-golang text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">Go</span>
+                                    <span class="block text-xs text-gray-500">Systems Engineer</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-cyan-100 text-cyan-700 text-xs font-bold rounded-full">3
+                                Courses</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">Go Fundamentals</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">201</span><span
+                                    class="text-gray-700">Structs & Interfaces</span><span
+                                    class="ml-auto text-xs text-blue-600">Intermediate</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">301</span><span
+                                    class="text-gray-700">Concurrency</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-cloud text-cyan-500"></i> Fast software for the cloud</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More Tracks Row 2 -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- SQL -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-blue-500 to-indigo-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center shadow-lg shadow-blue-200/50">
+                                    <i class="fa-solid fa-database text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">SQL</span>
+                                    <span class="block text-xs text-gray-500">Data Engineer</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">1
+                                Course</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">SQL Mastery</span><span
+                                    class="ml-auto text-xs text-green-600">All Levels</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-table text-blue-500"></i> Schema, Joins, Queries</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C Language -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-blue-600 to-blue-800"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center shadow-lg shadow-blue-200/50">
+                                    <span class="text-white font-bold text-lg">C</span>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">C</span>
+                                    <span class="block text-xs text-gray-500">Systems Programming</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">1
+                                Course</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">C Fundamentals</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-microchip text-blue-600"></i> Low-level power</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Groovy -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-teal-500 to-emerald-500"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500 to-emerald-500 flex items-center justify-center shadow-lg shadow-teal-200/50">
+                                    <span class="text-white font-bold">G</span>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">Groovy</span>
+                                    <span class="block text-xs text-gray-500">Automation</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-teal-100 text-teal-700 text-xs font-bold rounded-full">2
+                                Courses</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">Groovy Basics</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-xs font-bold">201</span><span
+                                    class="text-gray-700">DSLs</span><span
+                                    class="ml-auto text-xs text-purple-600">Advanced</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-wand-magic-sparkles text-teal-500"></i> Automate boring tasks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clojure -->
+                <div class="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm card-hover">
+                    <div class="h-2 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-200/50">
+                                    <i class="fa-solid fa-infinity text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-gray-900 text-lg">Clojure</span>
+                                    <span class="block text-xs text-gray-500">Functional Thinking</span>
+                                </div>
+                            </div>
+                            <span class="px-2.5 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full">2
+                                Courses</span>
+                        </div>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs font-bold">101</span><span
+                                    class="text-gray-700">Functional Foundations</span><span
+                                    class="ml-auto text-xs text-green-600">Beginner</span></div>
+                            <div class="flex items-center gap-2 text-sm"><span
+                                    class="w-7 h-7 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">201</span><span
+                                    class="text-gray-700">Recursion & Logic</span><span
+                                    class="ml-auto text-xs text-blue-600">Intermediate</span></div>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-gray-100">
+                            <p class="text-xs text-gray-500 flex items-center gap-1"><i
+                                    class="fa-solid fa-brain text-indigo-500"></i> Think differently</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Tracks -->
+            <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2"><i
+                    class="fa-solid fa-laptop-code text-brand-secondary"></i> Desktop Tracks (VS Code Extension)</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-gray-300 flex items-center justify-center"><i
+                                class="fa-solid fa-c text-gray-600"></i></div><span class="font-bold text-gray-700">C++
+                            (5)</span>
+                    </div>
+                    <p class="text-xs text-gray-500">Game Engines, STL</p>
+                </div>
+                <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-gray-300 flex items-center justify-center"><i
+                                class="fa-brands fa-microsoft text-gray-600"></i></div><span
+                            class="font-bold text-gray-700">C# .NET (5)</span>
+                    </div>
+                    <p class="text-xs text-gray-500">ASP.NET, LINQ</p>
+                </div>
+                <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-gray-300 flex items-center justify-center"><i
+                                class="fa-solid fa-leaf text-gray-600"></i></div><span
+                            class="font-bold text-gray-700">Spring Boot</span>
+                    </div>
+                    <p class="text-xs text-gray-500">Java Enterprise</p>
+                </div>
+                <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-gray-300 flex items-center justify-center"><i
+                                class="fa-brands fa-node-js text-gray-600"></i></div><span
+                            class="font-bold text-gray-700">MERN Stack</span>
+                    </div>
+                    <p class="text-xs text-gray-500">Full Stack JS</p>
+                </div>
+                <div class="bg-gray-100 rounded-2xl p-6 border border-gray-200">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-10 h-10 rounded-xl bg-gray-300 flex items-center justify-center"><span
+                                class="font-bold text-gray-600">K</span></div><span
+                            class="font-bold text-gray-700">Kotlin (3)</span>
+                    </div>
+                    <p class="text-xs text-gray-500">Essentials, OOP, Ktor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUALIZERS -->
+    <section id="visualizers" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">20+ <span
+                        class="gradient-text">Interactive Visualizers</span></h2>
+                <p class="text-gray-600 text-lg">See how code really works. Not just read about it.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-100"><i
+                        class="fa-solid fa-clock-rotate-left text-2xl text-purple-600 mb-3"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Time Travel</h4>
+                    <p class="text-sm text-gray-600">Step through code line-by-line. Rewind. See variable changes.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-100"><i
+                        class="fa-solid fa-chart-bar text-2xl text-blue-600 mb-3"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Algorithm Sandbox</h4>
+                    <p class="text-sm text-gray-600">Visualize sorting, searching, BFS, DFS, Dijkstra.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-red-50 to-pink-50 border border-red-100"><i
+                        class="fa-solid fa-bug-slash text-2xl text-red-600 mb-3"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Bug Squasher</h4>
+                    <p class="text-sm text-gray-600">Gamified debugging. Find bugs, earn points.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100"><i
+                        class="fa-solid fa-ghost text-2xl text-emerald-600 mb-3"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Ghost Code™</h4>
+                    <p class="text-sm text-gray-600">Type-along practice. Build muscle memory.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100"><i
+                        class="fa-solid fa-memory text-2xl text-amber-600 mb-3"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">Memory Manager</h4>
+                    <p class="text-sm text-gray-600">Visualize Stack vs Heap, pointers, allocation.</p>
+                </div>
+                <div class="p-6 rounded-2xl bg-gradient-to-br from-violet-50 to-purple-50 border border-violet-100"><i
+                        class="fa-solid fa-database text-2xl text-violet-600 mb-3"></i>
+                    <h4 class="font-bold text-gray-900 mb-2">SQL Visualizer</h4>
+                    <p class="text-sm text-gray-600">Watch tables transform with JOINs and queries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SANDBOX -->
+    <section id="sandbox" class="py-20 bg-brand-dark text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl sm:text-4xl font-bold mb-6">Build with Real <span
+                            class="text-brand-accent">Offline Runtimes</span></h2>
+                    <p class="text-gray-400 text-lg mb-8">No cloud compilers. No internet required. Desktop-class
+                        runtimes in your pocket.</p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center"><i
+                                    class="fa-brands fa-python text-yellow-400"></i></div><span class="text-sm">Python
+                                3.10</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center"><i
+                                    class="fa-brands fa-java text-red-400"></i></div><span class="text-sm">Java</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center"><i
+                                    class="fa-brands fa-golang text-cyan-400"></i></div><span class="text-sm">Go</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center"><i
+                                    class="fa-solid fa-c text-blue-400"></i></div><span class="text-sm">C</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-500/20 flex items-center justify-center"><i
+                                    class="fa-brands fa-html5 text-orange-400"></i></div><span
+                                class="text-sm">Web</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center"><i
+                                    class="fa-solid fa-database text-emerald-400"></i></div><span
+                                class="text-sm">SQL</span>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 rounded-xl p-4 inline-flex items-center gap-3">
+                        <i class="fa-solid fa-keyboard text-brand-accent text-xl"></i>
+                        <span class="text-sm"><strong>Developer Keyboard</strong> - Arrow keys, Tab, and coding
+                            symbols</span>
+                    </div>
+                </div>
+                <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+                    <div class="flex gap-2 mb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <div class="font-mono text-sm space-y-1">
+                        <div><span class="text-gray-500">$</span> python app.py</div>
+                        <div class="text-purple-400">from flask import Flask</div>
+                        <div class="text-gray-400">app = Flask(__name__)</div>
+                        <div class="text-green-400 mt-2">>>> Server running ✓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFLINE -->
+    <section class="py-16 bg-gradient-to-r from-brand-primary to-brand-secondary text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6">Learn Anywhere. No WiFi Needed.</h2>
+            <div class="flex flex-wrap justify-center gap-8 text-lg">✈️ On a plane &nbsp;&nbsp; 🚇 In the subway
+                &nbsp;&nbsp; 🏕️ While camping &nbsp;&nbsp; ☕ At a café</div>
+        </div>
+    </section>
+
+    <!-- VS CODE -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span
+                        class="inline-block px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full mb-4">VS
+                        Code Extension</span>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Continue on <span
+                            class="gradient-text">Desktop</span></h2>
+                    <p class="text-gray-600 mb-6">Start a course on your phone. Continue on VS Code. Progress syncs
+                        automatically.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-gray-700"><i
+                                class="fa-solid fa-check-circle text-green-500"></i> Progress syncs instantly</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i
+                                class="fa-solid fa-check-circle text-green-500"></i> Ghost Code practice in IDE</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i
+                                class="fa-solid fa-check-circle text-green-500"></i> Bug Squasher challenges</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-900 rounded-2xl p-6 shadow-xl">
+                    <div class="flex gap-2 mb-4">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div><span class="ml-2 text-gray-500 text-xs">VS
+                            Code</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-48 bg-gray-800 rounded-lg p-3 text-xs">
+                            <p class="text-indigo-400 font-semibold mb-2"><i
+                                    class="fa-solid fa-graduation-cap mr-1"></i> CoderKit</p>
+                            <div class="bg-indigo-500/20 p-1.5 rounded text-indigo-300">Python - 80%</div>
+                        </div>
+                        <div class="flex-1 bg-gray-800 rounded-lg p-3 font-mono text-xs text-gray-400">
+                            <div class="text-gray-600"># Practice</div>
+                            <div><span class="text-purple-400">def</span> sort(arr):</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJECTIONS -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-10">Why Choose CoderKit?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-gray-100">
+                    <p class="font-semibold text-gray-900 mb-2">"Why not Pydroid?"</p>
+                    <p class="text-sm text-gray-600">No visualizers. No courses. No practice mode.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100">
+                    <p class="font-semibold text-gray-900 mb-2">"Why not YouTube?"</p>
+                    <p class="text-sm text-gray-600">Watching ≠ Learning. CoderKit makes you practice.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-100">
+                    <p class="font-semibold text-gray-900 mb-2">"Why not my laptop?"</p>
+                    <p class="text-sm text-gray-600">CoderKit is always in your pocket.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-10">CoderKit vs Alternatives</h2>
+            <div class="bg-gray-50 rounded-2xl overflow-hidden border border-gray-200">
+                <table class="w-full text-sm">
+                    <thead class="bg-gray-900 text-white">
+                        <tr>
+                            <th class="py-3 px-4 text-left">Feature</th>
+                            <th class="py-3 px-4 text-center gradient-bg">CoderKit</th>
+                            <th class="py-3 px-4 text-center">Pydroid</th>
+                            <th class="py-3 px-4 text-center">AIDE</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="py-3 px-4">Offline Python</td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-3 px-4">Go & C Support</td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4">20+ Visualizers</td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-3 px-4">Structured Courses</td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4">Ghost Code Practice</td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="py-3 px-4">VS Code Sync</td>
+                            <td class="py-3 px-4 text-center text-green-500"><i class="fa-solid fa-check"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                            <td class="py-3 px-4 text-center text-gray-300"><i class="fa-solid fa-xmark"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6">
+            <h2 class="text-2xl font-bold text-gray-900 text-center mb-10">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <details class="bg-white p-5 rounded-xl border border-gray-100">
+                    <summary class="font-semibold text-gray-900 cursor-pointer">How does offline execution work?
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm">CoderKit embeds real runtimes (Chaquopy for Python, ECJ for
+                        Java, Yaegi for Go, TCC for C) directly in the app.</p>
+                </details>
+                <details class="bg-white p-5 rounded-xl border border-gray-100">
+                    <summary class="font-semibold text-gray-900 cursor-pointer">What is Ghost Code practice?</summary>
+                    <p class="mt-3 text-gray-600 text-sm">You see faded code and type along character-by-character. It
+                        builds muscle memory.</p>
+                </details>
+                <details class="bg-white p-5 rounded-xl border border-gray-100">
+                    <summary class="font-semibold text-gray-900 cursor-pointer">Can I use NumPy, Pandas, Flask?
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm">Yes! Python comes pre-bundled with NumPy, Pandas, Matplotlib,
+                        Scikit-learn, Flask, Django, and 20+ libraries.</p>
+                </details>
+                <details class="bg-white p-5 rounded-xl border border-gray-100">
+                    <summary class="font-semibold text-gray-900 cursor-pointer">Does the keyboard have arrow keys?
+                    </summary>
+                    <p class="mt-3 text-gray-600 text-sm">Yes! Our custom developer keyboard includes arrow keys, Tab,
+                        Ctrl, and quick access to coding symbols.</p>
+                </details>
+                <details class="bg-white p-5 rounded-xl border border-gray-100">
+                    <summary class="font-semibold text-gray-900 cursor-pointer">Is CoderKit free?</summary>
+                    <p class="mt-3 text-gray-600 text-sm">Yes! CoderKit is free to download with a generous free tier.
+                        Premium courses available via subscription.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 gradient-bg text-white text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Ready to Start Learning?</h2>
+            <p class="text-lg opacity-90 mb-8">Download CoderKit and master coding today.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#"
+                    class="bg-white text-brand-primary px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-gray-100"><i
+                        class="fa-brands fa-google-play text-xl"></i> Get on Google Play</a>
+                <a href="#"
+                    class="border-2 border-white/30 px-8 py-4 rounded-xl font-semibold flex items-center gap-2 hover:bg-white/10"><i
+                        class="fa-brands fa-apple text-xl"></i> iOS Coming Soon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-gray-400 py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div
+                            class="w-8 h-8 gradient-bg rounded-lg flex items-center justify-center text-white text-sm font-bold">
+                            &lt;/&gt;</div><span class="font-bold text-white">CoderKit</span>
+                    </div>
+                    <p class="text-sm">Learn. Practice. Build.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-3">Product</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="#courses" class="hover:text-white">Courses</a></li>
+                        <li><a href="#visualizers" class="hover:text-white">Visualizers</a></li>
+                        <li><a href="#sandbox" class="hover:text-white">Sandbox</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-3">Resources</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-3">Connect</h4>
+                    <div class="flex gap-3"><a href="#"
+                            class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary"><i
+                                class="fa-brands fa-twitter"></i></a><a href="#"
+                            class="w-9 h-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-primary"><i
+                                class="fa-brands fa-github"></i></a></div>
+                    <p class="text-xs mt-3">Made with ❤️ by<br><a href="#" class="text-brand-accent">Shivam App
+                            Studio</a></p>
+                </div>
+            </div>
+            <div
+                class="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <p>© 2025 Shivam App Studio</p>
+                <div class="flex gap-4"><a href="#" class="hover:text-white">Privacy</a><a href="#"
+                        class="hover:text-white">Terms</a></div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

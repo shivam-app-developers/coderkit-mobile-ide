@@ -11,11 +11,12 @@ export default function Navbar() {
           <span className="font-bold text-lg text-gray-900">CoderKit</span>
         </Link>
         <div className="hidden md:flex space-x-6 text-sm font-medium">
-          <a href="#how-it-works" className="text-gray-600 hover:text-brand-primary">How It Works</a>
           <a href="#courses" className="text-gray-600 hover:text-brand-primary">Courses</a>
           <a href="#visualizers" className="text-gray-600 hover:text-brand-primary">Visualizers</a>
-          <a href="#sandbox" className="text-gray-600 hover:text-brand-primary">Sandbox</a>
-          <a href="#faq" className="text-gray-600 hover:text-brand-primary">FAQ</a>
+          <Link href="/pricing" className="text-gray-600 hover:text-brand-primary">Pricing</Link>
+          <Link href="/docs" className="text-gray-600 hover:text-brand-primary">Docs</Link>
+          <Link href="/blog" className="text-gray-600 hover:text-brand-primary">Blog</Link>
+          <Link href="/faq" className="text-gray-600 hover:text-brand-primary">FAQ</Link>
         </div>
         <Link href="#" className="gradient-bg text-white px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90">
           Get App

@@ -8,7 +8,9 @@ import SandboxSection from '@/components/landing/SandboxSection';
 import VSCodeSection from '@/components/landing/VSCodeSection';
 import ComparisonTable from '@/components/landing/ComparisonTable';
 import FAQSection from '@/components/landing/FAQSection';
+import BlogRow from '@/components/landing/BlogRow';
 import Link from 'next/link';
+import { getAllPosts } from '@/lib/mdx';
 import JsonLd from '@/components/seo/JsonLd';
 
 export default function Home() {
@@ -78,6 +80,7 @@ export default function Home() {
         </section>
 
         <ComparisonTable />
+        <BlogRow posts={getAllPosts()} />
         <FAQSection />
 
         {/* CTA */}
