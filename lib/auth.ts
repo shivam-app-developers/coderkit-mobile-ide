@@ -25,6 +25,9 @@ async function initializeNewUser(user: User) {
 
 export async function signInWithGoogle() {
     try {
+        if (!auth || !googleProvider) {
+            throw new Error('Firebase not properly initialized');
+        }
         const result = await signInWithPopup(auth, googleProvider);
         // Initialize user stats on successful sign-in
         await initializeNewUser(result.user);
@@ -37,6 +40,9 @@ export async function signInWithGoogle() {
 
 export async function signInWithGithub() {
     try {
+        if (!auth || !githubProvider) {
+            throw new Error('Firebase not properly initialized');
+        }
         const result = await signInWithPopup(auth, githubProvider);
         // Initialize user stats on successful sign-in
         await initializeNewUser(result.user);
@@ -49,6 +55,9 @@ export async function signInWithGithub() {
 
 export async function signOut() {
     try {
+        if (!auth) {
+            throw new Error('Firebase not properly initialized');
+        }
         await firebaseSignOut(auth);
         return { error: null };
     } catch (error) {
@@ -58,6 +67,10 @@ export async function signOut() {
 }
 
 export function subscribeToAuthChanges(callback: (user: User | null) => void) {
+    if (!auth) {
+        console.warn('Firebase not initialized for auth listener');
+        return () => {};
+    }
     return onAuthStateChanged(auth, callback);
 }
 

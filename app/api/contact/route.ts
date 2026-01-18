@@ -3,6 +3,9 @@ import { db } from '@/lib/firebase';
 import { collection, addDoc, serverTimestamp, Timestamp } from 'firebase/firestore';
 import { sendContactConfirmation, sendContactNotificationToAdmin } from '@/lib/email';
 
+// Skip this route during build
+export const dynamic = 'force-dynamic';
+
 interface ContactFormData {
   name: string;
   email: string;
