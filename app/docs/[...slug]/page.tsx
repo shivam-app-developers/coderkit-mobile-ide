@@ -8,39 +8,97 @@ import { notFound } from 'next/navigation';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 
-const docsDirectory = path.join(process.cwd(), 'content/docs');
+// Define the documentation folders
+const docsFolders = ['user-guides', 'product', 'marketing'];
 
-function getAllDocSlugs(dir: string, basePath: string[] = []): string[][] {
-  const slugs: string[][] = [];
-  if (!fs.existsSync(dir)) return slugs;
+function getAllDocSlugs(): { slug: string[]; folder: string }[] {
+  const slugs: { slug: string[]; folder: string }[] = [];
 
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    if (entry.isDirectory()) {
-      slugs.push(...getAllDocSlugs(path.join(dir, entry.name), [...basePath, entry.name]));
-    } else if (entry.name.endsWith('.mdx')) {
-      const slug = entry.name.replace(/\.mdx$/, '');
-      slugs.push([...basePath, slug]);
+  for (const folder of docsFolders) {
+    const folderPath = path.join(process.cwd(), 'content', folder);
+    if (!fs.existsSync(folderPath)) continue;
+
+    const files = fs.readdirSync(folderPath);
+    for (const file of files) {
+      if (file.endsWith('.md') || file.endsWith('.mdx')) {
+        const slug = file.replace(/\.(md|mdx)$/, '');
+        slugs.push({ slug: [folder, slug], folder });
+      }
     }
   }
+
   return slugs;
 }
 
+function getDocBySlug(slugPath: string): { content: string; data: Record<string, unknown>; folder: string } | null {
+  // slugPath format: "user-guides/getting-started" or "product/product-overview"
+  const parts = slugPath.split('/');
+
+  if (parts.length < 2) {
+    // If single slug, search in all folders
+    for (const folder of docsFolders) {
+      const mdxPath = path.join(process.cwd(), 'content', folder, `${parts[0]}.mdx`);
+      const mdPath = path.join(process.cwd(), 'content', folder, `${parts[0]}.md`);
+
+      if (fs.existsSync(mdxPath)) {
+        const fileContents = fs.readFileSync(mdxPath, 'utf8');
+        const { content, data } = matter(fileContents);
+        return { content, data, folder };
+      }
+      if (fs.existsSync(mdPath)) {
+        const fileContents = fs.readFileSync(mdPath, 'utf8');
+        const { content, data } = matter(fileContents);
+        return { content, data, folder };
+      }
+    }
+    return null;
+  }
+
+  // Two-part slug: folder/file
+  const folder = parts[0];
+  const fileName = parts.slice(1).join('/');
+
+  const mdxPath = path.join(process.cwd(), 'content', folder, `${fileName}.mdx`);
+  const mdPath = path.join(process.cwd(), 'content', folder, `${fileName}.md`);
+
+  if (fs.existsSync(mdxPath)) {
+    const fileContents = fs.readFileSync(mdxPath, 'utf8');
+    const { content, data } = matter(fileContents);
+    return { content, data, folder };
+  }
+  if (fs.existsSync(mdPath)) {
+    const fileContents = fs.readFileSync(mdPath, 'utf8');
+    const { content, data } = matter(fileContents);
+    return { content, data, folder };
+  }
+
+  return null;
+}
+
 export function generateStaticParams() {
-  const slugs = getAllDocSlugs(docsDirectory);
-  return slugs.map((slug) => ({ slug }));
+  const slugs = getAllDocSlugs();
+  return slugs.map(({ slug }) => ({ slug }));
+}
+
+// Helper to get a friendly section title
+function getSectionTitle(folder: string): string {
+  const titles: Record<string, string> = {
+    'user-guides': 'User Guides',
+    'product': 'Product',
+    'marketing': 'Marketing',
+  };
+  return titles[folder] || 'Documentation';
 }
 
 export default function DocPage({ params }: { params: { slug: string[] } }) {
   const slugPath = params.slug.join('/');
-  const fullPath = path.join(process.cwd(), 'content/docs', `${slugPath}.mdx`);
+  const doc = getDocBySlug(slugPath);
 
-  if (!fs.existsSync(fullPath)) {
+  if (!doc) {
     notFound();
   }
 
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { content, data } = matter(fileContents);
+  const { content, data, folder } = doc;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -51,9 +109,11 @@ export default function DocPage({ params }: { params: { slug: string[] } }) {
 
         <article className="flex-1 min-w-0">
           <header className="mb-8 border-b border-gray-100 pb-8">
-            <p className="text-sm font-semibold text-brand-primary mb-2">{(data as any).section || 'Documentation'}</p>
-            <h1 className="text-3xl font-black text-gray-900 mb-4">{(data as any).title}</h1>
-            <p className="text-xl text-gray-600">{(data as any).description}</p>
+            <p className="text-sm font-semibold text-brand-primary mb-2">{(data as any).section || getSectionTitle(folder)}</p>
+            <h1 className="text-3xl font-black text-gray-900 mb-4">{(data as any).title || slugPath}</h1>
+            {(data as any).description && (
+              <p className="text-xl text-gray-600">{(data as any).description}</p>
+            )}
           </header>
 
           <div className="prose prose-indigo max-w-none bg-white p-8 rounded-2xl shadow-sm border border-gray-100">

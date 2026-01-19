@@ -5,38 +5,33 @@ import { usePathname } from 'next/navigation';
 
 const docSections = [
   {
-    title: "Getting Started",
+    title: "User Guides",
     items: [
-      { title: "Installation", href: "/docs/getting-started/installation" },
-      { title: "Your First Program", href: "/docs/getting-started/first-program" },
+      { title: "Getting Started", href: "/docs/user-guides/getting-started" },
+      { title: "Features Overview", href: "/docs/user-guides/features-overview" },
+      { title: "IDE Guide", href: "/docs/user-guides/ide-guide" },
+      { title: "Learn Mode Guide", href: "/docs/user-guides/learn-mode-guide" },
+      { title: "Supported Languages", href: "/docs/user-guides/supported-languages" },
+      { title: "FAQ", href: "/docs/user-guides/faq" },
     ]
   },
   {
-    title: "Learning Methodology",
+    title: "Product",
     items: [
-      { title: "Visualizers", href: "/docs/learning/visualizers" },
+      { title: "Product Overview", href: "/docs/product/product-overview" },
+      { title: "Why CoderKit", href: "/docs/product/why-codelab" },
+      { title: "Education Guide", href: "/docs/product/education-guide" },
+      { title: "Success Stories", href: "/docs/product/success-stories" },
     ]
   },
   {
-    title: "Languages",
+    title: "Marketing",
     items: [
-      { title: "Python", href: "/docs/languages/python" },
-      { title: "Java", href: "/docs/languages/java" },
+      { title: "Landing Page Hero", href: "/docs/marketing/landing-page-hero" },
+      { title: "Pricing Page", href: "/docs/marketing/pricing-page" },
+      { title: "Social Media Snippets", href: "/docs/marketing/social-media-snippets" },
     ]
   },
-  {
-    title: "Profile & Stats",
-    items: [
-      { title: "Stats Explained", href: "/docs/profile/stats-explained" },
-      { title: "Achievements", href: "/docs/profile/achievements" },
-    ]
-  },
-  {
-    title: "API Reference",
-    items: [
-      { title: "Course Format", href: "/docs/api/course-format" },
-    ]
-  }
 ];
 
 export default function DocsSidebar() {
@@ -54,11 +49,10 @@ export default function DocsSidebar() {
                 <li key={i}>
                   <Link
                     href={item.href}
-                    className={`block text-sm py-1 border-l-2 pl-3 transition ${
-                      isActive
+                    className={`block text-sm py-1 border-l-2 pl-3 transition ${isActive
                         ? 'border-brand-primary text-brand-primary font-medium'
                         : 'border-transparent text-gray-600 hover:text-brand-primary hover:border-brand-primary'
-                    }`}
+                      }`}
                   >
                     {item.title}
                   </Link>

@@ -98,40 +98,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
 function getBlogPosts(): { slug: string; date: string }[] {
   const postsDirectory = path.join(process.cwd(), 'content/blog');
-  
+
   if (!fs.existsSync(postsDirectory)) {
     return [];
   }
 
   const files = fs.readdirSync(postsDirectory);
-  return files.map((filename) => {
+  const mdFiles = files.filter(f => f.endsWith('.md') || f.endsWith('.mdx'));
+
+  return mdFiles.map((filename) => {
     const filePath = path.join(postsDirectory, filename);
     const content = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(content);
     return {
-      slug: filename.replace(/\.mdx$/, ''),
-      date: (data as any).date || new Date().toISOString(),
+      slug: filename.replace(/\.(md|mdx)$/, ''),
+      date: (data as { date?: string }).date || new Date().toISOString(),
     };
   });
 }
 
-function getDocPages(dir: string = '', basePath: string = ''): string[] {
-  const docsDirectory = path.join(process.cwd(), 'content/docs', dir);
-
-  if (!fs.existsSync(docsDirectory)) {
-    return [];
-  }
-
-  const entries = fs.readdirSync(docsDirectory, { withFileTypes: true });
+function getDocPages(): string[] {
+  const docsFolders = ['user-guides', 'product', 'marketing'];
   const pages: string[] = [];
 
-  for (const entry of entries) {
-    const fullPath = path.join(basePath, entry.name);
-    if (entry.isDirectory()) {
-      pages.push(...getDocPages(path.join(dir, entry.name), fullPath));
-    } else if (entry.name.endsWith('.mdx')) {
-      const slug = entry.name.replace(/\.mdx$/, '');
-      pages.push(fullPath + '/' + slug);
+  for (const folder of docsFolders) {
+    const folderPath = path.join(process.cwd(), 'content', folder);
+
+    if (!fs.existsSync(folderPath)) {
+      continue;
+    }
+
+    const files = fs.readdirSync(folderPath);
+    for (const file of files) {
+      if (file.endsWith('.md') || file.endsWith('.mdx')) {
+        const slug = file.replace(/\.(md|mdx)$/, '');
+        pages.push(`${folder}/${slug}`);
+      }
     }
   }
 

@@ -24,8 +24,12 @@ export function getAllPosts(): BlogPost[] {
   }
 
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, '');
+  // Filter to only include .md and .mdx files
+  const mdFiles = fileNames.filter(f => f.endsWith('.md') || f.endsWith('.mdx'));
+
+  const allPostsData = mdFiles.map((fileName) => {
+    // Remove both .md and .mdx extensions
+    const slug = fileName.replace(/\.(md|mdx)$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
@@ -48,7 +52,12 @@ export function getAllPosts(): BlogPost[] {
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
-  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  // Try .mdx first, then .md
+  let fullPath = path.join(postsDirectory, `${slug}.mdx`);
+
+  if (!fs.existsSync(fullPath)) {
+    fullPath = path.join(postsDirectory, `${slug}.md`);
+  }
 
   if (!fs.existsSync(fullPath)) {
     return null;
