@@ -16,9 +16,9 @@ interface Course {
 
 function OrderSuccessContent() {
     const searchParams = useSearchParams();
-    const [orderId] = useState(`ORD-${Date.now()}`);
-
     const courseId = searchParams.get('course');
+    const orderId = searchParams.get('orderId') || `ORD-${Date.now()}`;
+
     const course = (coursesMetadata as Course[]).find(c => c.id === courseId);
 
     return (

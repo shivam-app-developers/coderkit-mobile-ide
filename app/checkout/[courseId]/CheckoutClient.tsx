@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Script from 'next/script';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { useAuth } from '@/contexts/AuthContext';
@@ -24,11 +25,18 @@ function getCoursePrice(level: string): number {
     return 5.99;
 }
 
+declare global {
+    interface Window {
+        Cashfree?: any;
+    }
+}
+
 export default function CheckoutClient({ courseId }: { courseId: string }) {
     const router = useRouter();
     const { user, loading: authLoading } = useAuth();
     const [loading, setLoading] = useState(false);
     const [alreadyOwned, setAlreadyOwned] = useState(false);
+    const [cashfreeLoaded, setCashfreeLoaded] = useState(false);
 
     const course = (coursesMetadata as Course[]).find(c => c.id === courseId);
     const price = course ? getCoursePrice(course.level) : 0;
@@ -49,27 +57,60 @@ export default function CheckoutClient({ courseId }: { courseId: string }) {
     }, [user, authLoading, router, courseId]);
 
     const handleCheckout = async () => {
-        if (!user || !course) return;
+        if (!user || !course || !cashfreeLoaded) return;
 
         setLoading(true);
 
         try {
-            // Demo: Simulate payment processing
-            await new Promise(resolve => setTimeout(resolve, 2000));
+            // Generate unique order ID
+            const orderId = `${user.uid}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+            const priceInPaisa = Math.round(price * 100);
 
-            // Save purchase to Firestore
-            const success = await addCoursePurchase(user.uid, courseId);
+            // Prepare order with course info in metadata
+            const orderData = {
+                order_id: orderId,
+                order_amount: price,
+                order_currency: 'INR',
+                customer_details: {
+                    customer_id: user.uid,
+                    customer_email: user.email || 'user@coderkit.in',
+                    customer_phone: '9999999999', // Dummy, can be collected from user
+                },
+                order_meta: {
+                    return_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/order/success?orderId=${orderId}`,
+                    notify_url: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/api/webhooks/cashfree`,
+                },
+                course_id: courseId,
+            };
 
-            if (success) {
-                router.push(`/order/success?course=${courseId}`);
+            // Create order via backend
+            const orderResponse = await fetch('/api/orders/create', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(orderData),
+            });
+
+            if (!orderResponse.ok) {
+                throw new Error('Failed to create order');
+            }
+
+            const { session_id } = await orderResponse.json();
+
+            // Redirect to Cashfree checkout
+            if (window.Cashfree) {
+                const checkoutOptions = {
+                    paymentSessionId: session_id,
+                    redirectTarget: '_self',
+                };
+                window.Cashfree.checkout(checkoutOptions);
             } else {
-                throw new Error('Failed to save purchase');
+                throw new Error('Cashfree not loaded');
             }
 
         } catch (err) {
             console.error('Checkout error:', err);
             setLoading(false);
-            alert('Payment failed. Please try again.');
+            alert('Payment initialization failed. Please try again.');
         }
     };
 
@@ -126,16 +167,23 @@ export default function CheckoutClient({ courseId }: { courseId: string }) {
 
     return (
         <div className="min-h-screen bg-gray-50 flex flex-col">
+            {/* Load Cashfree SDK */}
+            <Script
+                src="https://sdk.cashfree.com/js/v3/cashfree.js"
+                strategy="lazyOnload"
+                onLoad={() => setCashfreeLoaded(true)}
+            />
+            
             <Navbar />
             <main className="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-2xl mx-auto w-full">
 
                 <h1 className="text-2xl font-bold text-gray-900 mb-8">Checkout</h1>
 
                 {/* Demo Notice */}
-                <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 mb-6">
-                    <p className="text-sm text-yellow-800">
+                <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+                    <p className="text-sm text-blue-800">
                         <i className="fa-solid fa-info-circle mr-2"></i>
-                        <strong>Demo Mode:</strong> This is a simulated checkout. Real payments via Cashfree coming soon.
+                        <strong>Sandbox Mode:</strong> Use test card 4111111111111111 with any future expiry and CVV.
                     </p>
                 </div>
 
